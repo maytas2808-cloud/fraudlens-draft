@@ -84,6 +84,18 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
 
 Docker: `docker build -t fraudlens . && docker run -p 8000:8000 fraudlens`
 
+## Gmail protection (optional)
+
+Users sign in with Google at `/dashboard`. FraudLens then checks their inbox every `POLL_SECONDS`, rates each new email with the same engine, emails an instant alert for high-risk mail and a daily report, and lists results on the dashboard. Email bodies are not stored, only sender, subject, score, level and reasons (SQLite, `data/fraudlens.db`). Google tokens are encrypted with `TOKEN_ENCRYPTION_KEY`.
+
+1. In Google Cloud Console, create a project and enable the **Gmail API**.
+2. Configure the **OAuth consent screen** (External, Testing) and add every Gmail address that will sign in as a **test user** (up to 100).
+3. Create an **OAuth client ID** (Web application) with the authorised redirect URI `http://localhost:8000/auth/callback`.
+4. Copy `.env.example` to `.env` and fill in `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `SESSION_SECRET` and `TOKEN_ENCRYPTION_KEY`.
+5. Start the server and open `http://localhost:8000/dashboard` (use `localhost`, not `127.0.0.1`, so the sign-in cookie matches the redirect URI).
+
+Scopes requested: `gmail.readonly` and `gmail.send`. Public release would need Google's app verification and an annual CASA security assessment; Testing mode needs neither. The background checker needs an always-on server, so it doesn't run on serverless hosts such as Vercel.
+
 ## Retrain, retune, refresh intel, re-evaluate
 
 Raw data (not committed, ~160 MB) goes in `data/raw/`: `texts.json` and `urls.json` from `ealvaradob/phishing-dataset` and the Tranco list `top-1m.csv`. Train, validation and test splits are fixed in `scripts/splits.py`.
@@ -114,3 +126,4 @@ The rate limit (30 analyses/minute per IP) is in memory, so on multi-instance ho
 - Only text is analysed: no images, QR codes, attachments or calls.
 
 The full list is in `REPORT.md`.
+# FraudLens-Draft1
