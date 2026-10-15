@@ -1,0 +1,9 @@
+.venv
+data
+scripts
+tests
+**/__pycache__
+.pytest_cache
+requirements-dev.txt
+Dockerfile
+.scratch

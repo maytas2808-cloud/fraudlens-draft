@@ -1,0 +1,36 @@
+{
+  "text": {
+    "n": 4028,
+    "precision": 0.9607,
+    "recall": 0.9707,
+    "f1": 0.9657,
+    "roc_auc": 0.9966,
+    "accuracy": 0.9737,
+    "tp": 1490,
+    "tn": 2432,
+    "fp": 61,
+    "fn": 45,
+    "false_positive_rate": 0.0245,
+    "false_negative_rate": 0.0293,
+    "recall_at_1pct_fpr": 0.9368,
+    "dataset": "ealvaradob/phishing-dataset texts.json (emails + SMS); 80/20 stratified split (seed 42), 10% of the train part held back for score tuning; trained on 14498",
+    "train_seconds": 18.3
+  },
+  "url": {
+    "n": 60000,
+    "precision": 0.9518,
+    "recall": 0.9643,
+    "f1": 0.958,
+    "roc_auc": 0.9942,
+    "accuracy": 0.9604,
+    "tp": 27095,
+    "tn": 30531,
+    "fp": 1372,
+    "fn": 1002,
+    "false_positive_rate": 0.043,
+    "false_negative_rate": 0.0357,
+    "recall_at_1pct_fpr": 0.8825,
+    "dataset": "ealvaradob/phishing-dataset urls.json; trained on 755697 URLs, tested on 60000 never-seen URLs; scheme and www. stripped; character 3-5-grams + host/path word tokens",
+    "train_seconds": 225.5
+  }
+}

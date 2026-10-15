@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FraudLens — Phishing &amp; Digital Fraud Detector</title>
+  <meta name="description" content="Paste a suspicious SMS, WhatsApp message, email or link. FraudLens explains whether it is phishing or fraud and what to do.">
+  <meta name="theme-color" content="#060913">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/styles.css?v=12">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><span class="grid"></span><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
+
+  <header class="topbar">
+    <a class="brand" href="/"><img src="/static/favicon.svg" alt="" width="30" height="30"> FraudLens</a>
+    <nav aria-label="Main">
+      <a href="/" aria-current="page">Analyse</a>
+      <a href="/report">Evaluation</a>
+      <a href="/docs">API</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="eyebrow reveal"><span class="dot"></span> Explainable phishing &amp; fraud detection</span>
+      <h1 class="reveal d1">Is this message <span class="gradient-text">a scam?</span></h1>
+      <p class="lead reveal d2">Paste an SMS, WhatsApp message, email or link. Get a risk score, the exact reasons, and what to do next, in milliseconds.</p>
+      <div class="stats" id="stats" aria-label="Measured accuracy" hidden>
+        <div class="stat reveal d3"><div class="num" id="stat-urls">–</div><div class="lbl">of never-seen phishing URLs caught</div></div>
+        <div class="stat reveal d4"><div class="num" id="stat-texts">–</div><div class="lbl">precision on held-out emails &amp; SMS</div></div>
+        <div class="stat reveal d5"><div class="num" id="stat-fresh">–</div><div class="lbl">of live phishing caught without the feed</div></div>
+      </div>
+    </section>
+
+    <div class="modebar">
+      <div class="modes" role="tablist" aria-label="Workspace">
+        <button type="button" id="mode-check" role="tab" aria-selected="true" aria-controls="workspace">Check a message</button>
+        <button type="button" id="mode-drill" role="tab" aria-selected="false" aria-controls="drill">Spot the scam</button>
+      </div>
+    </div>
+
+    <div class="layout" id="workspace" role="tabpanel">
+      <section class="panel input-panel reveal d4" aria-labelledby="input-title">
+        <div class="panel-head">
+          <h2 id="input-title">Check a message</h2>
+          <span class="status-pill" id="draft-status">Waiting for text</span>
+        </div>
+        <form id="analyze-form" novalidate>
+          <label for="content" class="label">Suspicious message, email or URL <span class="kbd">Ctrl + Enter</span></label>
+          <div class="field" id="field">
+            <textarea id="content" name="content" rows="9" maxlength="20000" required
+                      placeholder="e.g. Dear customer, your SBI account will be blocked today. Update KYC at http://sbi-kyc-update.xyz"></textarea>
+            <span class="scanline" aria-hidden="true"></span>
+          </div>
+          <div class="row between">
+            <span id="char-count" class="muted small" aria-live="polite">0 / 20,000</span>
+            <span class="row gap">
+              <button type="button" id="file-btn" class="btn-link">Open a file</button>
+              <button type="button" id="clear-btn" class="btn-link">Clear</button>
+            </span>
+          </div>
+          <input type="file" id="file-input" accept=".txt,.eml,.text,text/plain,message/rfc822" hidden>
+
+          <div id="signals" class="signals" aria-live="polite">
+            <span class="signals-label">Live read</span>
+            <div id="signal-chips" class="chips"><span class="muted small">Hints light up as you type. They are not the final score.</span></div>
+          </div>
+          <p id="signal-detail" class="signal-detail"></p>
+
+          <fieldset class="samples">
+            <legend class="label">Try an example</legend>
+            <div class="chips" id="samples"></div>
+            <div class="sample-actions">
+              <button type="button" id="random-btn" class="btn-ghost">Check a random example</button>
+            </div>
+          </fieldset>
+
+          <label class="check">
+            <input type="checkbox" id="live">
+            <span><strong>Live link check</strong> — follow redirects and look up the domain's age. This contacts the link's server from ours (never from your device).</span>
+          </label>
+
+          <button type="submit" id="submit-btn" class="btn-primary">Analyse message</button>
+          <p id="form-error" class="error" role="alert" hidden></p>
+        </form>
+
+        <p class="privacy small muted">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span>Submissions are analysed in memory and never stored or logged. Your history stays in this browser only.</span>
+        </p>
+      </section>
+
+      <section class="panel result-panel reveal d5" aria-labelledby="result-title" aria-live="polite">
+        <div class="panel-head">
+          <h2 id="result-title">Verdict</h2>
+          <span class="status-pill" id="result-pill">Ready</span>
+        </div>
+        <div id="empty-state" class="empty">
+          <div class="shield" aria-hidden="true">
+            <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+            <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.6"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><circle cx="11.5" cy="11.5" r="3"/><path d="M14 14l2.5 2.5" stroke="#22d3ee"/></svg>
+          </div>
+          <p class="empty-title">Results appear here</p>
+          <p class="muted">Drop a .txt or .eml file, or press Ctrl+Enter. The full check explains every reason it found.</p>
+          <div class="rotator" aria-hidden="true">
+            <p>Practise in Spot the scam — guess before the score appears.</p>
+            <p>After a verdict, copy a note your family can read on WhatsApp.</p>
+            <p>A saved email can be dropped straight onto the box.</p>
+          </div>
+        </div>
+        <div id="loading" class="loading" hidden>
+          <div class="radar" aria-hidden="true"></div>
+          <ul class="steps" id="steps">
+            <li>Undoing tricks like “K.Y.C” and hxxp</li>
+            <li>Checking wording for scam patterns</li>
+            <li>Running the language model</li>
+            <li>Inspecting links and domains</li>
+          </ul>
+        </div>
+        <div id="result" hidden>
+          <div class="verdict" id="verdict">
+            <div class="gauge" aria-hidden="true">
+              <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="52"/><circle class="fill" id="gauge-fill" cx="60" cy="60" r="52"/></svg>
+              <div class="value"><div><b id="score-value">0</b><span>of 100</span></div></div>
+            </div>
+            <div>
+              <p class="verdict-label" id="verdict-level"></p>
+              <p class="grade-kicker" id="grade-letter"></p>
+              <p class="verdict-summary" id="verdict-summary"></p>
+              <div class="chips" id="scenario-chips"></div>
+            </div>
+          </div>
+
+          <div id="callout" class="callout" hidden></div>
+          <div id="entities" class="entities" hidden></div>
+          <div class="result-actions">
+            <button type="button" id="speak-btn" class="btn-ghost" aria-pressed="false">Read aloud</button>
+            <button type="button" id="family-btn" class="btn-ghost">Message for family</button>
+            <button type="button" id="note-btn" class="btn-ghost">Copy incident note</button>
+          </div>
+          <p id="action-status" class="action-status" role="status"></p>
+          <p id="export-label" class="export-label" hidden></p>
+          <pre id="export-box" class="export" hidden></pre>
+          <ol class="pipeline" aria-label="Checks that ran">
+            <li>Normalised</li>
+            <li>Wording</li>
+            <li>Models</li>
+            <li>Links</li>
+          </ol>
+
+          <div id="grade-block" hidden>
+            <h3>How this was graded</h3>
+            <p id="grade-how" class="grade-how"></p>
+            <ol id="grade-scale" class="grade-scale"></ol>
+            <p id="grade-math" class="grade-math"></p>
+            <div class="table-wrap" id="grade-table"></div>
+            <ul id="grade-rubric" class="grade-rubric"></ul>
+            <p id="grade-notes" class="small muted"></p>
+          </div>
+
+          <div id="breakdown-block">
+            <h3>Where the score comes from</h3>
+            <div class="breakdown-bar" id="breakdown-bar" role="img"></div>
+            <ul class="legend" id="breakdown-legend"></ul>
+          </div>
+
+          <h3>What to do</h3>
+          <ul id="advice" class="advice stagger"></ul>
+
+          <h3>Why — the indicators</h3>
+          <ul id="indicators" class="indicators stagger"></ul>
+
+          <div id="email-block" hidden>
+            <h3>Email headers</h3>
+            <dl id="email-meta" class="meta"></dl>
+          </div>
+
+          <div id="url-block" hidden>
+            <h3>Links found</h3>
+            <div id="urls" class="stagger"></div>
+          </div>
+
+          <p class="small muted" id="timing"></p>
+        </div>
+      </section>
+    </div>
+
+    <section id="drill" class="panel drill" role="tabpanel" hidden aria-labelledby="drill-title">
+      <div class="panel-head">
+        <div>
+          <p class="drill-kicker" id="drill-round">Message 1</p>
+          <h2 id="drill-title">Would you fall for this?</h2>
+        </div>
+        <span class="status-pill" id="drill-score">0 of 0 right</span>
+      </div>
+      <p class="muted drill-lead">Guess first. FraudLens then runs the same check as the main page. Nothing from this drill is sent anywhere except that check.</p>
+      <blockquote id="drill-text" class="drill-text" tabindex="-1"></blockquote>
+      <div class="drill-actions" id="drill-actions">
+        <button type="button" class="choice safe" data-guess="low">Looks safe <kbd>1</kbd></button>
+        <button type="button" class="choice mid" data-guess="medium">Not sure <kbd>2</kbd></button>
+        <button type="button" class="choice bad" data-guess="high">This is a scam <kbd>3</kbd></button>
+      </div>
+      <div id="drill-reveal" class="drill-reveal" hidden></div>
+      <button type="button" id="drill-next" class="btn-primary drill-next" hidden>Next message</button>
+    </section>
+
+    <section class="how" aria-label="How it works">
+      <div class="step fade-in"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c7d2fe" stroke-width="2"><path d="M4 7h16M4 12h10M4 17h7"/></svg></div><h4>Normalise</h4><p>Strips hidden characters and undoes disguises like “bl0cked”, “K.Y.C” and hxxp://.</p></div>
+      <div class="step fade-in"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2 18a2 2 0 001.7 3h16.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg></div><h4>Wording rules</h4><p>20+ Indian-context scam patterns: fake KYC, digital arrest, job, prize, UPI collect, and more.</p></div>
+      <div class="step fade-in"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7.5 7.5l3.5 9M16.5 7.5l-3.5 9M8 6h8"/></svg></div><h4>Two ML models</h4><p>A text model and a URL model trained on 770k labelled examples, with the words that drove each score.</p></div>
+      <div class="step fade-in"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg></div><h4>Link intelligence</h4><p>Look-alike domains, brand misuse, threat feeds, site reputation and optional live redirect checks.</p></div>
+    </section>
+
+    <section class="history-wrap">
+      <div class="panel fade-in" aria-labelledby="history-title">
+        <div class="row between">
+          <h2 id="history-title">Your recent checks</h2>
+          <div class="row gap">
+            <label class="check small"><input type="checkbox" id="history-toggle" checked> Keep history</label>
+            <button type="button" id="history-clear" class="btn-link">Clear history</button>
+          </div>
+        </div>
+        <p id="history-empty" class="muted small">Nothing yet. Checks you run are listed here (stored only in this browser).</p>
+        <ul id="history" class="history"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer small muted">
+    FraudLens is a prototype. It can be wrong: always verify through official channels. Lost money? Call <strong>1930</strong> or report at cybercrime.gov.in.
+  </footer>
+  <script src="/static/app.js?v=12"></script>
+</body>
+</html>

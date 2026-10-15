@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evaluation — FraudLens</title>
+  <meta name="theme-color" content="#060913">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/styles.css?v=12">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><span class="grid"></span><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
+  <header class="topbar">
+    <a class="brand" href="/"><img src="/static/favicon.svg" alt="" width="30" height="30"> FraudLens</a>
+    <nav aria-label="Main">
+      <a href="/">Analyse</a>
+      <a href="/report" aria-current="page">Evaluation</a>
+      <a href="/docs">API</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <span class="eyebrow reveal"><span class="dot"></span> Measured, not claimed</span>
+    <h1 class="reveal d1">How accurate is <span class="gradient-text">FraudLens?</span></h1>
+    <p class="lead reveal d2" id="generated">Loading evaluation report…</p>
+    <p id="report-error" class="error" role="alert" hidden></p>
+  </section>
+
+  <main class="report">
+    <section class="panel reveal d3">
+      <h2>Headline numbers</h2>
+      <div class="cards" id="headline"></div>
+    </section>
+    <section class="panel fade-in">
+      <h2>1. Public data never used in training</h2>
+      <p class="muted">Threat-intelligence lookup switched off, so these measure the rules and machine learning alone.</p>
+      <div class="bars" id="public-bars"></div>
+      <div class="table-wrap" id="public-table"></div>
+      <p id="fresh"></p>
+    </section>
+    <section class="panel fade-in">
+      <h2>2. Held-out hand-written scenarios</h2>
+      <p class="muted" id="holdout-desc"></p>
+      <div class="table-wrap" id="holdout-table"></div>
+      <h3>Every error on this set</h3>
+      <div class="table-wrap" id="holdout-errors"></div>
+    </section>
+    <section class="panel fade-in">
+      <h2>3. Development scenario set</h2>
+      <p class="muted">Used while building the rules and as a guard when tuning, so these numbers are optimistic. Kept as a regression test.</p>
+      <div class="table-wrap" id="dev-table"></div>
+      <h3>Errors</h3>
+      <div class="table-wrap" id="dev-errors"></div>
+    </section>
+    <section class="panel fade-in">
+      <h2>4. Machine-learning models alone</h2>
+      <div class="table-wrap" id="ml-table"></div>
+      <p class="small muted" id="ml-notes"></p>
+    </section>
+    <section class="panel fade-in">
+      <h2>5. Threat intelligence</h2>
+      <p id="intel"></p>
+    </section>
+    <section class="panel fade-in">
+      <h2>6. Limitations</h2>
+      <ul id="limitations" class="limitations"></ul>
+    </section>
+  </main>
+  <footer class="footer small muted">Flagged = risk score of 30 or more (medium or high). <a href="/api/report">Raw JSON</a></footer>
+  <script src="/static/report.js"></script>
+</body>
+</html>

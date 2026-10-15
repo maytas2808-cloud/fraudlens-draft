@@ -1,0 +1,45 @@
+{"id": "h01", "label": 1, "category": "bank_kyc", "text": "Bank of Baroda: Dear user, your mobile banking will stop working from tomorrow. Complete your re-KYC now on bob-rekyc.info to continue services."}
+{"id": "h02", "label": 1, "category": "credential_phishing", "text": "IRCTC: Your account is locked due to multiple failed logins. Reset your password at irctc-account-unlock.com within 6 hours."}
+{"id": "h03", "label": 1, "category": "payment_request", "text": "Hello, I sent Rs 5,000 to your Google Pay by mistake. Please return it, I am sending a request, just approve it with your PIN."}
+{"id": "h04", "label": 1, "category": "government", "text": "Dear citizen, your Aadhaar card has been misused for opening 3 bank accounts. Call the police helpdesk on 7428365910 immediately or legal action will be taken."}
+{"id": "h05", "label": 1, "category": "job", "text": "Hi, I am Neha from a recruitment agency. We have part time work: review products on Amazon and earn 200-500 per review, daily payment. Interested? Reply YES."}
+{"id": "h06", "label": 1, "category": "investment", "text": "Earn 3% profit every day with our AI trading bot. Minimum deposit 5000. Withdraw anytime. Join now on Telegram: t.me/ai_profit_india"}
+{"id": "h07", "label": 1, "category": "prize", "text": "Lucky customer! Your number was selected for a Tata Safari car in the Tata Motors anniversary draw. Call 9801234567 to claim. Registration charge applies."}
+{"id": "h08", "label": 1, "category": "delivery", "text": "Your Amazon parcel could not be delivered as the address is incorrect. Please update address and pay Rs 12 fee: amzn-delivery-help.top"}
+{"id": "h09", "label": 1, "category": "tech_support", "text": "Your HDFC credit card has been charged Rs 49,999. To cancel, download the RustDesk app and our support executive will reverse it."}
+{"id": "h10", "label": 1, "category": "loan", "text": "Get a personal loan up to 10 lakh in 10 minutes, no CIBIL needed! Apply now: instant-rupee-loan.site. Only Rs 1,499 file charge."}
+{"id": "h11", "label": 1, "category": "url_only", "text": "https://login-microsoftonline.com-secure.auth-session.top/common/oauth2"}
+{"id": "h12", "label": 1, "category": "url_only", "text": "http://phonepe-cashback-reward.weebly.com/claim"}
+{"id": "h13", "label": 1, "category": "url_only", "text": "https://xn--80ak6aa92e.com/login"}
+{"id": "h14", "label": 1, "category": "url_only", "text": "http://45.137.21.9/paytm/kyc/index.html"}
+{"id": "h15", "label": 1, "category": "email", "text": "From: \"Netflix\" <billing@netflix-account-support.net>\nSubject: Payment declined - action required\n\nHi, we're having trouble with your current billing information. Please update your payment details within 24 hours or your account will be suspended: https://netflix-account-support.net/billing"}
+{"id": "h16", "label": 1, "category": "email", "text": "From: \"SBI Rewards\" <sbirewardz@yahoo.com>\nSubject: Your 9,850 reward points expire today\n\nDear Customer, redeem your SBI reward points before they expire today. Login with your card number, expiry and CVV at http://sbi-rewardz-redeem.xyz"}
+{"id": "h17", "label": 1, "category": "novel_modified", "text": "Your child has been detained by police in a rape case. To settle the matter and avoid FIR, transfer Rs 1,50,000 right now. Don't call anyone or we will arrest him."}
+{"id": "h18", "label": 1, "category": "novel_modified", "text": "Electricity department: Your meter is not updated. Your light will be cut at 10 pm tonight. Download the Bill Update app from the link we will send on WhatsApp."}
+{"id": "h19", "label": 1, "category": "novel_obfuscated", "text": "Y0ur P@ytm w@llet is susp3nded. Pr0vide y0ur UPI P1N to re-activ@te immediately."}
+{"id": "h20", "label": 1, "category": "novel_modified", "text": "Sir, I'm calling from your credit card department. Your card limit is increased to 3 lakh free. Just tell me the code you just received to activate it."}
+{"id": "h21", "label": 1, "category": "payment_request", "text": "Congratulations, your Mudra loan of Rs 3,00,000 is sanctioned. Deposit Rs 4,500 insurance amount to get the loan released today."}
+{"id": "h22", "label": 1, "category": "investment", "text": "SEBI registered advisor here. Join our WhatsApp group for free stock tips, 100% sure-shot calls with guaranteed profit. Limited seats."}
+{"id": "h23", "label": 0, "category": "otp_legit", "text": "Your Zomato verification code is 728163. Do not share this code with anyone."}
+{"id": "h24", "label": 0, "category": "otp_legit", "text": "OTP for your Flipkart order delivery is 4192. Share it with the delivery agent only when you receive your package."}
+{"id": "h25", "label": 0, "category": "bank_alert_legit", "text": "INR 640.00 spent on HDFC Bank Card x4521 at SWIGGY on 2026-10-12:20:14. Avl Lmt: INR 1,12,300. Not you? Call 18002026161 to block."}
+{"id": "h26", "label": 0, "category": "bank_alert_legit", "text": "Your SIP of Rs 5,000 in Parag Parikh Flexi Cap Fund has been processed successfully. Units will be allotted in 2 working days."}
+{"id": "h27", "label": 0, "category": "bank_alert_legit", "text": "Dear customer, your fixed deposit of Rs 1,00,000 matures on 20-Oct-2026. It will be auto-renewed for the same tenure. - Kotak Mahindra Bank"}
+{"id": "h28", "label": 0, "category": "personal", "text": "Happy birthday Ananya! Have an amazing year ahead, see you at the party tonight."}
+{"id": "h29", "label": 0, "category": "personal", "text": "Papa, I reached the hostel safely. Will call you after dinner."}
+{"id": "h30", "label": 0, "category": "work", "text": "Hi Sourav, sharing the meeting notes from today's client call. Action items are in the doc, please review by Monday."}
+{"id": "h31", "label": 0, "category": "work", "text": "Your leave request for 18-20 Oct has been approved by your manager."}
+{"id": "h32", "label": 0, "category": "service_legit", "text": "Your Uber trip receipt: Rs 312 for the ride from Koramangala to Indiranagar. Rate your driver in the app."}
+{"id": "h33", "label": 0, "category": "service_legit", "text": "Your Tata Play subscription is due for renewal on 22 Oct. Recharge via the Tata Play app to continue watching."}
+{"id": "h34", "label": 0, "category": "service_legit", "text": "Thank you for visiting Max Hospital. Your lab report is ready and available in the Max Healthcare app."}
+{"id": "h35", "label": 0, "category": "promo_legit", "text": "Diwali sale is live! Flat 40% off on all kurtas at FabIndia stores and fabindia.com. Offer ends Sunday."}
+{"id": "h36", "label": 0, "category": "promo_legit", "text": "Get your favourite pizza at 50% off this weekend with code PIZZA50 in the Domino's app."}
+{"id": "h37", "label": 0, "category": "awareness_legit", "text": "Beware of fraud calls claiming to be from the police or CBI. There is no 'digital arrest' in law. Report such calls on 1930. - Issued in public interest"}
+{"id": "h38", "label": 0, "category": "url_legit", "text": "https://www.icicibank.com/personal-banking/cards/credit-card"}
+{"id": "h39", "label": 0, "category": "url_legit", "text": "https://www.flipkart.com/apple-iphone-15-black-128-gb/p/itm6ac6485515ae4"}
+{"id": "h40", "label": 0, "category": "url_legit", "text": "https://uidai.gov.in/en/my-aadhaar/get-aadhaar.html"}
+{"id": "h41", "label": 0, "category": "url_legit", "text": "https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python"}
+{"id": "h42", "label": 0, "category": "url_legit", "text": "https://www.makemytrip.com/hotels/hotel-listing/?city=CTJAI"}
+{"id": "h43", "label": 0, "category": "email_legit", "text": "From: LinkedIn <messages-noreply@linkedin.com>\nSubject: You appeared in 12 searches this week\n\nHi, see who's looking at your profile and the companies they work for. View on linkedin.com."}
+{"id": "h44", "label": 0, "category": "email_legit", "text": "From: Priya Shah <priya@acmedesign.in>\nSubject: Updated quotation\n\nHi, please find the updated quotation for the website project attached. The total is Rs 85,000 plus GST. Let me know if you have questions."}
+{"id": "h45", "label": 0, "category": "service_legit", "text": "Your Aadhaar-PAN link status: your PAN is already linked with Aadhaar. No action is required."}

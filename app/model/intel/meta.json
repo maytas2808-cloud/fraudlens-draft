@@ -1,0 +1,15 @@
+{
+  "fetched_at": "2026-10-14T10:28:58+00:00",
+  "sources": {
+    "openphish": "https://openphish.com/feed.txt",
+    "urlhaus": "https://urlhaus.abuse.ch/downloads/text_online/",
+    "phishing_database": "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-domains-ACTIVE.txt",
+    "tranco": "https://tranco-list.eu/top-1m.csv.zip"
+  },
+  "counts": {
+    "openphish_urls": 300,
+    "urlhaus_urls": 27949,
+    "bad_hosts": 2250,
+    "top_domains": 100000
+  }
+}
